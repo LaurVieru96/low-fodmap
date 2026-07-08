@@ -1,6 +1,17 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import ServingDial from '../components/ServingDial'
 import StatusBadge from '../components/StatusBadge'
+import { swaps } from '../data/swaps'
+
+const subgroups = [
+  { label: 'Fructani', examples: 'grâu, ceapă, usturoi' },
+  { label: 'GOS', examples: 'leguminoase, caju, fistic' },
+  { label: 'Lactoză', examples: 'lapte, iaurt, brânză proaspătă' },
+  { label: 'Fructoză în exces', examples: 'miere, mere, mango' },
+  { label: 'Sorbitol', examples: 'mere, avocado, caise' },
+  { label: 'Manitol', examples: 'ciuperci, conopidă, pepene roșu' },
+]
 
 const phases = [
   {
@@ -76,6 +87,23 @@ export default function GuidePage() {
       </section>
 
       <section>
+        <h2 className="text-2xl text-ink">Ce sunt FODMAP-urile</h2>
+        <p className="mt-3 max-w-3xl leading-relaxed text-ink-soft">
+          Carbohidrați cu lanț scurt care se absorb slab, sunt fermentați de bacterii și trag apă în
+          intestin — de aici balonarea, gazele și durerea la persoanele cu IBS. Sunt șase subgrupe,
+          iar aplicația îți arată pe fiecare aliment care dintre ele e responsabilă.
+        </p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {subgroups.map((s) => (
+            <div key={s.label} className="rounded-2xl border border-line bg-surface p-4">
+              <div className="font-display font-semibold text-ink">{s.label}</div>
+              <div className="mt-1 text-sm text-muted">{s.examples}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
         <h2 className="text-2xl text-ink">Dieta în 3 faze</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-3">
           {phases.map((p, i) => (
@@ -89,6 +117,46 @@ export default function GuidePage() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-2xl text-ink">Așa nu → Așa da</h2>
+        <p className="mt-2 text-ink-soft">Înlocuiri simple care păstrează gustul, fără FODMAP-uri.</p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {swaps.map((s) => (
+            <div
+              key={s.avoid.name}
+              className="flex items-center gap-3 rounded-2xl border border-line bg-surface p-4"
+            >
+              <div className="flex min-w-0 flex-1 items-center gap-2">
+                <span className="text-2xl" aria-hidden="true">
+                  {s.avoid.emoji}
+                </span>
+                <span className="truncate text-sm text-muted line-through">{s.avoid.name}</span>
+              </div>
+              <ArrowRight size={18} className="shrink-0 text-accent" aria-hidden="true" />
+              <div className="flex min-w-0 flex-1 items-center gap-2">
+                <span className="text-2xl" aria-hidden="true">
+                  {s.choose.emoji}
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-medium text-ink">{s.choose.name}</span>
+                  <span className="block text-xs text-muted">{s.why}</span>
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-2xl border border-accent/20 bg-accent-soft/50 p-5">
+        <h2 className="text-lg text-ink">Regula porției &amp; „stacking"</h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-ink-soft">
+          „Low-FODMAP" e o proprietate a porției, nu a alimentului. Mai multe porții „verzi" mâncate
+          împreună se pot aduna peste prag (efectul de <em>stacking</em>) — mai ales fructele.
+          Combină alimentele limitate cu unele nelimitate (morcov, cartof, orez) și distanțează
+          mesele la 2–3 ore.
+        </p>
+      </section>
+
       <section
         className="rounded-2xl border p-5"
         style={{
@@ -98,9 +166,10 @@ export default function GuidePage() {
       >
         <p className="text-sm leading-relaxed text-ink-soft">
           <strong className="text-ink">Informativ, nu sfat medical.</strong> Dieta low-FODMAP se
-          face ideal cu un dietetician specializat, pentru IBS diagnosticat medical. Faza de
-          eliminare e temporară (2–6 săptămâni), nu pe viață. Valorile de porție sunt orientative —
-          Monash le retestează periodic.
+          face ideal cu un dietetician specializat, pentru IBS diagnosticat medical. Circa 3 din 4
+          persoane se ameliorează, dar nu toată lumea. Faza de eliminare e temporară (2–6
+          săptămâni), nu pe viață. Valorile de porție sunt orientative — Monash le retestează
+          periodic.
         </p>
       </section>
     </div>
