@@ -107,19 +107,21 @@ export default function RecipeDetailPage() {
         </ul>
       </section>
 
-      <section className="mt-8">
-        <h2 className="text-lg text-ink">Preparare</h2>
-        <ol className="mt-3 space-y-4">
-          {recipe.steps.map((step, i) => (
-            <li key={i} className="flex gap-3">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-soft font-mono text-sm font-semibold text-accent">
-                {i + 1}
-              </span>
-              <span className="pt-0.5 leading-relaxed text-ink-soft">{step}</span>
-            </li>
-          ))}
-        </ol>
-      </section>
+      {recipe.steps.length > 0 && (
+        <section className="mt-8">
+          <h2 className="text-lg text-ink">Preparare</h2>
+          <ol className="mt-3 space-y-4">
+            {recipe.steps.map((step, i) => (
+              <li key={i} className="flex gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-soft font-mono text-sm font-semibold text-accent">
+                  {i + 1}
+                </span>
+                <span className="pt-0.5 leading-relaxed text-ink-soft">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
 
       {recipe.sourceUrl && (
         <p className="mt-8 text-xs text-muted">

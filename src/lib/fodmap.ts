@@ -54,3 +54,12 @@ export function normalize(s: string): string {
     .toLowerCase()
     .trim()
 }
+
+/** URL-safe slug from a Romanian title, e.g. "Rețeta mea" → "reteta-mea". */
+export function slugify(s: string): string {
+  const base = normalize(s)
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 40)
+  return base || 'reteta'
+}
