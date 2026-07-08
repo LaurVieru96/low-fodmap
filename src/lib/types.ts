@@ -49,3 +49,26 @@ export interface Food {
   /** Optional "retestat / verifică" caution surfaced in the UI. */
   flag?: string
 }
+
+export type Difficulty = 'easy' | 'medium' | 'advanced'
+export type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack-dessert' | 'basic'
+
+export interface Recipe {
+  id: string
+  title: string
+  mealType: MealType
+  totalTimeMin: number
+  /** Hands-on time for "hands-off" recipes (slow cooker, infusing, chilling). */
+  activeTimeMin?: number
+  difficulty: Difficulty
+  servings: number
+  ingredients: string[]
+  steps: string[]
+  tags: string[]
+  /** English stock-photo search term for later image sourcing. */
+  photoKeyword?: string
+  sourceUrl?: string
+  /** Set on recipes built in the constructor and saved to localStorage. */
+  isUserRecipe?: boolean
+  fodmapVerdict?: FodmapStatus | 'unknown'
+}
