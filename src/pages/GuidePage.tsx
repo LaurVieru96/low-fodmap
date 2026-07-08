@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, ExternalLink } from 'lucide-react'
-import ServingDial from '../components/ServingDial'
-import StatusBadge from '../components/StatusBadge'
+import ServingExplorer from '../components/ServingExplorer'
 import { swaps } from '../data/swaps'
 
 const sources = [
@@ -95,33 +94,7 @@ export default function GuidePage() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-line bg-surface p-6 shadow-sm">
-          <div className="flex items-center gap-3">
-            <span className="text-4xl" aria-hidden="true">
-              🥑
-            </span>
-            <div className="min-w-0">
-              <div className="font-display text-lg font-semibold text-ink">Avocado</div>
-              <div className="text-sm text-muted">poliol (sorbitol)</div>
-            </div>
-            <div className="ml-auto">
-              <StatusBadge status="amber" />
-            </div>
-          </div>
-          <div className="mt-6">
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-              Cadranul de porție
-            </p>
-            <ServingDial
-              stops={[
-                { grams: '≤ 60 g', note: '~1/3 fruct', status: 'green' },
-                { grams: '~80 g', note: '~1/2 fruct', status: 'amber' },
-                { grams: 'mai mult', note: 'fruct întreg', status: 'red' },
-              ]}
-              caption="Același aliment își schimbă culoarea cu porția — asta e ideea centrală a dietei."
-            />
-          </div>
-        </div>
+        <ServingExplorer />
       </section>
 
       <section>
