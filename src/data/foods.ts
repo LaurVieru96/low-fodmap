@@ -52,6 +52,7 @@ export const foods: Food[] = [
   { id: 'castravete', nameRo: 'Castravete', nameEn: 'Cucumber', category: 'vegetables', emoji: '🥒', status: 'green', serving: '75 g', groups: [], confidence: 'monash' },
   { id: 'ardei-rosu', nameRo: 'Ardei roșu', nameEn: 'Red bell pepper', category: 'vegetables', emoji: '🫑', status: 'amber', serving: '43 g', groups: ['fructose'], note: 'Retestat (era „FODMAP-free").', confidence: 'monash', flag: 'retestat' },
   { id: 'ardei-verde', nameRo: 'Ardei verde', nameEn: 'Green bell pepper', category: 'vegetables', emoji: '🫑', status: 'green', serving: '75 g', groups: [], confidence: 'monash' },
+  { id: 'ardei-galben', nameRo: 'Ardei galben', nameEn: 'Yellow bell pepper', category: 'vegetables', emoji: '🫑', status: 'amber', serving: '35 g', groups: ['fructose'], note: 'Cea mai mică porție dintre ardei — mai copt, deci mai multă fructoză. Verde: 75 g.', confidence: 'monash', flag: 'retestat' },
   { id: 'spanac', nameRo: 'Spanac baby', nameEn: 'Baby spinach', category: 'vegetables', emoji: '🥬', status: 'green', serving: '75 g', groups: [], confidence: 'monash' },
   { id: 'vanata', nameRo: 'Vânătă', nameEn: 'Eggplant', category: 'vegetables', emoji: '🍆', status: 'green', serving: '1 cană (75 g)', groups: ['sorbitol'], note: 'Porție mare → sorbitol.', confidence: 'monash' },
   { id: 'dovlecel', nameRo: 'Dovlecel', nameEn: 'Zucchini', category: 'vegetables', emoji: '🥒', status: 'green', serving: '65 g', groups: ['fructans'], note: 'Peste 100 g → roșu.', confidence: 'monash' },

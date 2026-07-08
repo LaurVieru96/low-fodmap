@@ -117,6 +117,16 @@ export default function FoodsPage() {
         </select>
       </div>
 
+      {group !== 'all' && (
+        <div className="mb-4 rounded-xl border border-accent/20 bg-accent-soft/40 px-4 py-3">
+          <p className="text-sm leading-relaxed text-ink-soft">
+            <span className="font-display font-semibold text-ink">{GROUP_META[group].label}</span>
+            {' — '}
+            {GROUP_META[group].desc}
+          </p>
+        </div>
+      )}
+
       <p className="mb-4 text-sm text-muted">
         {filtered.length} {filtered.length === 1 ? 'aliment' : 'alimente'}
       </p>

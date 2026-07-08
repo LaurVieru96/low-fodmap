@@ -28,13 +28,37 @@ export const CATEGORY_ORDER: FoodCategory[] = [
   'snacks',
 ]
 
-export const GROUP_META: Record<FodmapGroup, { label: string; short: string }> = {
-  fructans: { label: 'Fructani', short: 'Fructani' },
-  gos: { label: 'GOS · galacto-oligozaharide', short: 'GOS' },
-  lactose: { label: 'Lactoză', short: 'Lactoză' },
-  fructose: { label: 'Fructoză în exces', short: 'Fructoză' },
-  sorbitol: { label: 'Sorbitol', short: 'Sorbitol' },
-  mannitol: { label: 'Manitol', short: 'Manitol' },
+export const GROUP_META: Record<FodmapGroup, { label: string; short: string; desc: string }> = {
+  fructans: {
+    label: 'Fructani',
+    short: 'Fructani',
+    desc: 'Lanțuri de fructoză, cea mai comună subgrupă — în grâu, ceapă și usturoi.',
+  },
+  gos: {
+    label: 'GOS · galacto-oligozaharide',
+    short: 'GOS',
+    desc: 'Galacto-oligozaharide: lanțuri de galactoză din leguminoase și din caju ori fistic.',
+  },
+  lactose: {
+    label: 'Lactoză',
+    short: 'Lactoză',
+    desc: 'Zahărul din lapte; dă simptome când lipsește enzima care îl digeră (lactaza).',
+  },
+  fructose: {
+    label: 'Fructoză în exces',
+    short: 'Fructoză',
+    desc: 'Fructoza în exces față de glucoză — miere, mere, mango, sirop de porumb.',
+  },
+  sorbitol: {
+    label: 'Sorbitol',
+    short: 'Sorbitol',
+    desc: 'Un poliol (alcool de zahăr) din mere, caise, avocado și produse „fără zahăr".',
+  },
+  mannitol: {
+    label: 'Manitol',
+    short: 'Manitol',
+    desc: 'Un poliol din ciuperci, conopidă și pepene roșu; și aditivul alimentar E421.',
+  },
 }
 
 export const CONFIDENCE_LABEL: Record<string, string> = {

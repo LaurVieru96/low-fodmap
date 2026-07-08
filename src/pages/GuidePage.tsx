@@ -1,8 +1,46 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ExternalLink } from 'lucide-react'
 import ServingDial from '../components/ServingDial'
 import StatusBadge from '../components/StatusBadge'
 import { swaps } from '../data/swaps'
+
+const sources = [
+  {
+    name: 'Monash FODMAP',
+    tag: 'oficial',
+    url: 'https://www.monashfodmap.com/',
+    desc: 'Universitatea care a creat dieta și testează alimentele în laborator. Aplicația lor e standardul de aur pentru porții.',
+  },
+  {
+    name: 'Lista de alimente Monash',
+    tag: 'referință',
+    url: 'https://www.monashfodmap.com/about-fodmap-and-ibs/high-and-low-fodmap-foods/',
+    desc: 'Listă generală permise / de evitat, direct de pe site — bună pentru o verificare rapidă.',
+  },
+  {
+    name: 'Cleveland Clinic',
+    tag: 'medical',
+    url: 'https://my.clevelandclinic.org/health/treatments/22466-low-fodmap-diet',
+    desc: 'Prezentare medicală clară a dietei și a celor trei faze.',
+  },
+  {
+    name: 'A Little Bit Yummy',
+    tag: 'dietetician',
+    url: 'https://alittlebityummy.com/',
+    desc: 'Ghiduri și rețete verificate de dieteticieni specializați FODMAP.',
+  },
+]
+
+type AcronymPart = { letter: string; word: string; gloss: string; muted?: boolean }
+
+const acronym: AcronymPart[] = [
+  { letter: 'F', word: 'Fermentabili', gloss: 'fermentați în colon' },
+  { letter: 'O', word: 'Oligozaharide', gloss: 'fructani, GOS' },
+  { letter: 'D', word: 'Dizaharide', gloss: 'lactoză' },
+  { letter: 'M', word: 'Monozaharide', gloss: 'fructoză în exces' },
+  { letter: 'A', word: 'and', gloss: '„și"', muted: true },
+  { letter: 'P', word: 'Polioli', gloss: 'sorbitol, manitol' },
+]
 
 const subgroups = [
   { label: 'Fructani', examples: 'grâu, ceapă, usturoi' },
@@ -89,11 +127,41 @@ export default function GuidePage() {
       <section>
         <h2 className="text-2xl text-ink">Ce sunt FODMAP-urile</h2>
         <p className="mt-3 max-w-3xl leading-relaxed text-ink-soft">
-          Carbohidrați cu lanț scurt care se absorb slab, sunt fermentați de bacterii și trag apă în
-          intestin — de aici balonarea, gazele și durerea la persoanele cu IBS. Sunt șase subgrupe,
-          iar aplicația îți arată pe fiecare aliment care dintre ele e responsabilă.
+          FODMAP e un acronim englezesc pentru un grup de carbohidrați cu lanț scurt. Se absorb slab
+          în intestinul subțire, sunt fermentați de bacterii și trag apă în intestin — de aici
+          balonarea, gazele și durerea la persoanele cu IBS.
         </p>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div className="mt-5 rounded-3xl border border-line bg-surface p-5 sm:p-6">
+          <dl className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+            {acronym.map((a) => (
+              <div key={a.word}>
+                <dt
+                  className={`font-display text-4xl font-semibold leading-none ${
+                    a.muted ? 'text-line' : 'text-accent'
+                  }`}
+                  aria-hidden="true"
+                >
+                  {a.letter}
+                </dt>
+                <dd
+                  className={`mt-2 font-display text-sm font-semibold ${
+                    a.muted ? 'text-muted' : 'text-ink'
+                  }`}
+                >
+                  {a.word}
+                </dd>
+                <dd className="mt-0.5 text-xs leading-snug text-muted">{a.gloss}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <p className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-soft">
+          Aceste clase se împart în șase subgrupe. Aplicația îți arată pe fiecare aliment care dintre
+          ele e responsabilă:
+        </p>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {subgroups.map((s) => (
             <div key={s.label} className="rounded-2xl border border-line bg-surface p-4">
               <div className="font-display font-semibold text-ink">{s.label}</div>
@@ -154,6 +222,45 @@ export default function GuidePage() {
           împreună se pot aduna peste prag (efectul de <em>stacking</em>) — mai ales fructele.
           Combină alimentele limitate cu unele nelimitate (morcov, cartof, orez) și distanțează
           mesele la 2–3 ore.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-2xl text-ink">De unde vin datele &amp; unde întrebi</h2>
+        <p className="mt-3 max-w-3xl leading-relaxed text-ink-soft">
+          Statusurile și porțiile din aplicație urmează <strong className="text-ink">Monash
+          University</strong> (Australia) — echipa care a dezvoltat dieta low-FODMAP și testează
+          alimentele în laborator. Ei retestează periodic, de aceea gramajele se mai schimbă (de
+          asta apare uneori insigna „retestat"). Când ai o întrebare despre un aliment anume, mergi
+          la sursă:
+        </p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {sources.map((s) => (
+            <a
+              key={s.name}
+              href={s.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex flex-col rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-accent/40"
+            >
+              <div className="flex items-center gap-2">
+                <span className="font-display font-semibold text-ink">{s.name}</span>
+                <ExternalLink
+                  size={14}
+                  className="text-muted transition-colors group-hover:text-accent"
+                  aria-hidden="true"
+                />
+                <span className="ml-auto font-mono text-[10px] uppercase tracking-wider text-accent">
+                  {s.tag}
+                </span>
+              </div>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{s.desc}</p>
+            </a>
+          ))}
+        </div>
+        <p className="mt-4 text-sm text-muted">
+          Pentru întrebări despre situația ta, cel mai sigur rămâne un dietetician specializat
+          FODMAP.
         </p>
       </section>
 
