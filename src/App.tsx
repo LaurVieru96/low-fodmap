@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { FavoritesProvider } from './store/favorites'
 import AppLayout from './components/layout/AppLayout'
 import GuidePage from './pages/GuidePage'
 import FoodsPage from './pages/FoodsPage'
@@ -11,18 +12,20 @@ import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
   return (
-    <Routes>
-      <Route element={<AppLayout />}>
-        <Route path="/" element={<GuidePage />} />
-        <Route path="/alimente" element={<FoodsPage />} />
-        <Route path="/retete" element={<RecipesPage />} />
-        <Route path="/retete/:id" element={<RecipeDetailPage />} />
-        <Route path="/reteta-mea" element={<MyRecipePage />} />
-        <Route path="/favorite" element={<FavoritesPage />} />
-        <Route path="/cumparaturi" element={<ShoppingPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+    <FavoritesProvider>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<GuidePage />} />
+          <Route path="/alimente" element={<FoodsPage />} />
+          <Route path="/retete" element={<RecipesPage />} />
+          <Route path="/retete/:id" element={<RecipeDetailPage />} />
+          <Route path="/reteta-mea" element={<MyRecipePage />} />
+          <Route path="/favorite" element={<FavoritesPage />} />
+          <Route path="/cumparaturi" element={<ShoppingPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </FavoritesProvider>
   )
 }
 
