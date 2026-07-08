@@ -1,15 +1,20 @@
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Clock, Heart, Users } from 'lucide-react'
+import { ArrowLeft, Clock, Heart, ShoppingBasket, Users } from 'lucide-react'
+import { getFoodById } from '../data/foods'
 import { getRecipeById } from '../data/recipes'
 import { DIFFICULTY_META, MEAL_META, tagLabel } from '../lib/recipeMeta'
 import { STATUS_META } from '../lib/status'
 import { useFavorites } from '../store/favorites-context'
 import { useUserRecipes } from '../store/userRecipes-context'
+import { useShopping } from '../store/shopping-context'
 
 export default function RecipeDetailPage() {
   const { id } = useParams()
   const { userRecipes } = useUserRecipes()
   const { isFavorite, toggleFavorite } = useFavorites()
+  const { addMany } = useShopping()
+  const [addedToList, setAddedToList] = useState(false)
 
   const recipe = (id ? getRecipeById(id) : undefined) ?? userRecipes.find((r) => r.id === id)
 
@@ -105,6 +110,22 @@ export default function RecipeDetailPage() {
             </li>
           ))}
         </ul>
+        <button
+          type="button"
+          onClick={() => {
+            addMany(
+              recipe.ingredients.map((ing) => ({
+                name: ing.name,
+                category: ing.foodId ? getFoodById(ing.foodId)?.category : undefined,
+              })),
+            )
+            setAddedToList(true)
+          }}
+          className={`btn-ghost mt-4 ${addedToList ? 'text-accent' : ''}`}
+        >
+          <ShoppingBasket size={18} strokeWidth={2} aria-hidden="true" />
+          {addedToList ? 'Adăugat la cumpărături' : 'Adaugă tot la cumpărături'}
+        </button>
       </section>
 
       {recipe.steps.length > 0 && (

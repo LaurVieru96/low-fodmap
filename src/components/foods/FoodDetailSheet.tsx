@@ -1,7 +1,9 @@
-import { Heart } from 'lucide-react'
+import { useState } from 'react'
+import { Heart, ShoppingBasket } from 'lucide-react'
 import type { Food } from '../../lib/types'
 import { CONFIDENCE_LABEL, GROUP_META } from '../../lib/fodmap'
 import { useFavorites } from '../../store/favorites-context'
+import { useShopping } from '../../store/shopping-context'
 import Sheet from '../Sheet'
 import StatusBadge from '../StatusBadge'
 import ServingDial from '../ServingDial'
@@ -13,6 +15,8 @@ interface FoodDetailSheetProps {
 
 export default function FoodDetailSheet({ food, onClose }: FoodDetailSheetProps) {
   const { isFavorite, toggleFavorite } = useFavorites()
+  const { addItem } = useShopping()
+  const [addedId, setAddedId] = useState<string | null>(null)
   const fav = food ? isFavorite('food', food.id) : false
 
   return (
@@ -85,6 +89,17 @@ export default function FoodDetailSheet({ food, onClose }: FoodDetailSheetProps)
           >
             <Heart size={18} strokeWidth={2} fill={fav ? 'currentColor' : 'none'} />
             {fav ? 'Salvat la favorite' : 'Adaugă la favorite'}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              addItem(food.nameRo, food.category)
+              setAddedId(food.id)
+            }}
+            className={`btn-ghost mt-2 w-full ${addedId === food.id ? 'text-accent' : ''}`}
+          >
+            <ShoppingBasket size={18} strokeWidth={2} />
+            {addedId === food.id ? 'Adăugat la cumpărături' : 'Adaugă la cumpărături'}
           </button>
         </div>
       )}
