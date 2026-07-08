@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+
+/* ── Design tokens ─────────────────────────────────────────────
+   "Date măsurate, calde": aubergine ink + warm paper, blueberry-indigo
+   as the interactive accent, and green/amber/red reserved STRICTLY for
+   FODMAP status so the traffic-light stays meaningful. */
+@theme {
+  /* Brand / surfaces */
+  --color-ink: #372a3b;
+  --color-ink-soft: #5e4f5c;
+  --color-muted: #8a7c84;
+  --color-paper: #faf4ef;
+  --color-surface: #ffffff;
+  --color-sunk: #f2e9e1;
+  --color-line: #e8ddd2;
+
+  /* Interactive (never green/amber/red, to protect status meaning) */
+  --color-accent: #4f46c7;
+  --color-accent-soft: #ecebfb;
+  --color-berry: #c1436e;
+  --color-berry-soft: #f9e6ee;
+
+  /* FODMAP status — semantic only */
+  --color-green: #2e9e5b;
+  --color-green-soft: #e4f1e9;
+  --color-green-ink: #1e7a45;
+  --color-amber: #cf8a1f;
+  --color-amber-soft: #f9efd8;
+  --color-amber-ink: #8a5a0e;
+  --color-red: #d4453f;
+  --color-red-soft: #fbe7e4;
+  --color-red-ink: #b0342f;
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      color 150ms ease;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background: var(--color-accent);
+  }
+  .btn-primary:hover {
+    background: color-mix(in srgb, var(--color-accent) 88%, #000);
+  }
+
+  .btn-ghost {
+    color: var(--color-ink);
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+  }
+  .btn-ghost:hover {
+    background: var(--color-sunk);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
