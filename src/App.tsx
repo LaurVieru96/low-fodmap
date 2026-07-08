@@ -1,4 +1,6 @@
-import { Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { APP_NAME } from './lib/constants'
 import { FavoritesProvider } from './store/favorites'
 import { UserRecipesProvider } from './store/userRecipes'
 import { ShoppingProvider } from './store/shopping'
@@ -12,11 +14,33 @@ import FavoritesPage from './pages/FavoritesPage'
 import ShoppingPage from './pages/ShoppingPage'
 import NotFoundPage from './pages/NotFoundPage'
 
+const PAGE_TITLES: Record<string, string> = {
+  '/': `${APP_NAME} — ghid low-FODMAP`,
+  '/alimente': `Alimente · ${APP_NAME}`,
+  '/retete': `Rețete · ${APP_NAME}`,
+  '/reteta-mea': `Rețeta mea · ${APP_NAME}`,
+  '/favorite': `Favorite · ${APP_NAME}`,
+  '/cumparaturi': `Cumpărături · ${APP_NAME}`,
+}
+
+/** Resets scroll and sets the document title on every route change. */
+function RouteMeta() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    document.title =
+      PAGE_TITLES[pathname] ??
+      (pathname.startsWith('/retete/') ? `Rețetă · ${APP_NAME}` : `${APP_NAME} — ghid low-FODMAP`)
+  }, [pathname])
+  return null
+}
+
 function App() {
   return (
     <FavoritesProvider>
       <UserRecipesProvider>
         <ShoppingProvider>
+          <RouteMeta />
           <Routes>
             <Route element={<AppLayout />}>
               <Route path="/" element={<GuidePage />} />
