@@ -1,13 +1,6 @@
 import type { FodmapStatus } from '../lib/status'
 import { STATUS_META } from '../lib/status'
-
-export interface DialStop {
-  /** Serving amount, e.g. "≤ 60 g". Rendered in mono to read as measured data. */
-  grams: string
-  /** Optional household measure, e.g. "~1/3 fruct". */
-  note?: string
-  status: FodmapStatus
-}
+import type { DialStop } from '../lib/types'
 
 const FILL: Record<FodmapStatus, string> = {
   green: 'var(--color-green)',
