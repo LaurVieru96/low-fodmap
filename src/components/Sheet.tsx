@@ -67,7 +67,7 @@ export default function Sheet({ open, onClose, title, children }: SheetProps) {
       <button
         type="button"
         aria-label="Închide"
-        className="absolute inset-0 bg-ink/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-[rgb(23_19_28/0.55)] backdrop-blur-sm"
         onClick={onClose}
       />
       <div

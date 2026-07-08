@@ -90,7 +90,7 @@ export default function FoodsPage() {
             onClick={() => togglePersonalized(false)}
             aria-pressed={!profile.personalized}
             className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
-              !profile.personalized ? 'bg-ink text-white' : 'text-ink-soft hover:bg-sunk'
+              !profile.personalized ? 'bg-ink text-paper' : 'text-ink-soft hover:bg-sunk'
             }`}
           >
             Monash
@@ -100,7 +100,7 @@ export default function FoodsPage() {
             onClick={() => togglePersonalized(true)}
             aria-pressed={profile.personalized}
             className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
-              profile.personalized ? 'bg-accent text-white' : 'text-ink-soft hover:bg-sunk'
+              profile.personalized ? 'bg-accent text-paper' : 'text-ink-soft hover:bg-sunk'
             }`}
           >
             Pentru mine
@@ -116,7 +116,7 @@ export default function FoodsPage() {
             onClick={() => setStatus(s.value)}
             className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
               status === s.value
-                ? 'bg-ink text-white'
+                ? 'bg-ink text-paper'
                 : 'border border-line bg-surface text-ink-soft hover:bg-sunk'
             }`}
           >

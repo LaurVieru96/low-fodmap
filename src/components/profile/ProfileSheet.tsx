@@ -97,7 +97,7 @@ export default function ProfileSheet() {
                           aria-pressed={active}
                           className={`flex-1 rounded-lg border px-2 py-1.5 text-xs font-medium transition-colors ${
                             active
-                              ? 'border-accent bg-accent text-white'
+                              ? 'border-accent bg-accent text-paper'
                               : 'border-line bg-surface text-muted hover:bg-sunk'
                           }`}
                         >

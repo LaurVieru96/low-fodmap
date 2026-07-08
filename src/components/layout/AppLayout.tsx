@@ -5,6 +5,7 @@ import { patientProfile } from '../../data/patient'
 import { APP_NAME, APP_TAGLINE } from '../../lib/constants'
 import ProfileButton from '../profile/ProfileButton'
 import ProfileSheet from '../profile/ProfileSheet'
+import ThemeToggle from '../ThemeToggle'
 
 function Wordmark() {
   return (
@@ -35,8 +36,9 @@ export default function AppLayout() {
     <div className="mx-auto flex min-h-svh w-full max-w-6xl">
       {/* Sidebar — desktop */}
       <aside className="sticky top-0 hidden h-svh w-60 shrink-0 flex-col border-r border-line px-4 py-6 lg:flex">
-        <div className="px-2">
+        <div className="flex items-center justify-between px-2">
           <Wordmark />
+          <ThemeToggle variant="sidebar" />
         </div>
         <nav className="mt-8 flex flex-col gap-1">
           {items.map((item) => {
@@ -82,7 +84,10 @@ export default function AppLayout() {
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-paper/90 px-4 py-3 backdrop-blur lg:hidden">
           <Wordmark />
-          <ProfileButton variant="header" />
+          <div className="flex items-center gap-2">
+            <ThemeToggle variant="header" />
+            <ProfileButton variant="header" />
+          </div>
         </header>
         <main className="flex-1 px-4 py-6 pb-28 sm:px-6 lg:px-10 lg:py-10 lg:pb-10">
           <Outlet />

@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { BookOpen, Carrot, CookingPot, Heart, ShoppingBasket } from 'lucide-react'
+import { BookOpen, Carrot, CookingPot, Heart, NotebookPen, ShoppingBasket } from 'lucide-react'
 
 export interface NavItem {
   to: string
@@ -16,6 +16,7 @@ export const navItems: NavItem[] = [
   { to: '/', label: 'Ghid', icon: BookOpen, end: true },
   { to: '/alimente', label: 'Alimente', icon: Carrot },
   { to: '/retete', label: 'Rețete', icon: CookingPot },
+  { to: '/jurnal', label: 'Jurnal', icon: NotebookPen },
   { to: '/favorite', label: 'Favorite', icon: Heart },
   { to: '/cumparaturi', label: 'Cumpărături', short: 'Coș', icon: ShoppingBasket },
 ]

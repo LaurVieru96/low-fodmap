@@ -37,6 +37,40 @@
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
 }
 
+/* ── Dark theme ────────────────────────────────────────────────
+   Because every surface uses a semantic token (bg-paper, text-ink,
+   border-line → var(--color-*)), overriding the variables here re-colors
+   the whole app with no per-element dark: variants. Kept a warm plum-black,
+   not a cold gray; green/amber/red stay recognizable — only their -soft
+   (backgrounds) and -ink (text-on-soft) variants are retuned so the
+   traffic-light reads correctly on a dark surface. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-ink: #efe8f0;
+  --color-ink-soft: #c6bcc9;
+  --color-muted: #a99ead;
+  --color-paper: #17131c;
+  --color-surface: #292233;
+  --color-sunk: #211b28;
+  --color-line: #3a3345;
+
+  --color-accent: #9a92ef;
+  --color-accent-soft: #262048;
+  --color-berry: #db6f92;
+  --color-berry-soft: #38222e;
+
+  --color-green: #46c07a;
+  --color-green-soft: #16301f;
+  --color-green-ink: #7ad99f;
+  --color-amber: #e0a030;
+  --color-amber-soft: #322611;
+  --color-amber-ink: #f2cd7d;
+  --color-red: #ec5a54;
+  --color-red-soft: #371a19;
+  --color-red-ink: #f5a5a0;
+}
+
 @layer base {
   :root {
     color-scheme: light;
@@ -99,7 +133,7 @@
   }
 
   .btn-primary {
-    color: #fff;
+    color: var(--color-paper);
     background: var(--color-accent);
   }
   .btn-primary:hover {
