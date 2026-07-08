@@ -204,7 +204,7 @@ export default function FoodsPage() {
                 {CATEGORY_META[c].label}
                 <span className="font-normal">· {items.length}</span>
               </h2>
-              <ul className="space-y-2">
+              <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
                 {items.map((f) => (
                   <FoodRow key={f.id} food={f} onSelect={setSelected} />
                 ))}

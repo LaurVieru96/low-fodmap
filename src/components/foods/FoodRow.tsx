@@ -23,7 +23,7 @@ export default function FoodRow({ food, onSelect }: FoodRowProps) {
       <button
         type="button"
         onClick={() => onSelect(food)}
-        className="flex w-full items-center gap-3 rounded-xl border border-line bg-surface px-3 py-2.5 text-left transition-colors hover:border-accent/40 hover:bg-sunk/40"
+        className="flex h-full w-full items-center gap-3 rounded-xl border border-line bg-surface px-3 py-2.5 text-left transition-colors hover:border-accent/40 hover:bg-sunk/40"
       >
         <span className="text-2xl" aria-hidden="true">
           {food.emoji}

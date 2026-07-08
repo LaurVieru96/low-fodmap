@@ -54,7 +54,7 @@ export default function FavoritesPage() {
           {favFoods.length > 0 && (
             <section>
               <h2 className="mb-3 text-lg text-ink">Alimente</h2>
-              <ul className="space-y-2">
+              <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
                 {favFoods.map((f) => (
                   <FoodRow key={f.id} food={f} onSelect={setSelected} />
                 ))}
