@@ -76,6 +76,8 @@ export interface Recipe {
   ingredients: Ingredient[]
   steps: string[]
   tags: string[]
+  /** Optional local photo path (public/images/recipes/<id>.webp); falls back to a generated cover. */
+  image?: string
   /** English stock-photo search term for later image sourcing. */
   photoKeyword?: string
   sourceUrl?: string

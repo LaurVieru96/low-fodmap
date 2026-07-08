@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Clock, Heart } from 'lucide-react'
 import type { Recipe } from '../../lib/types'
-import { DIFFICULTY_META, MEAL_META, tagLabel } from '../../lib/recipeMeta'
+import { DIFFICULTY_META, tagLabel } from '../../lib/recipeMeta'
 import { useFavorites } from '../../store/favorites-context'
+import RecipeCover from './RecipeCover'
 
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
   const { isFavorite, toggleFavorite } = useFavorites()
@@ -14,12 +15,7 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
         to={`/retete/${recipe.id}`}
         className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-colors hover:border-accent/40"
       >
-        <div
-          className="flex h-28 items-center justify-center bg-sunk text-5xl"
-          aria-hidden="true"
-        >
-          {MEAL_META[recipe.mealType].emoji}
-        </div>
+        <RecipeCover recipe={recipe} className="h-28" />
         <div className="flex flex-1 flex-col p-4">
           <h3 className="font-display text-base font-semibold text-ink">{recipe.title}</h3>
           <div className="mt-1.5 flex items-center gap-2 text-xs text-muted">

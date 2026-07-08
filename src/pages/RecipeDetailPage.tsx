@@ -8,6 +8,7 @@ import { STATUS_META } from '../lib/status'
 import { useFavorites } from '../store/favorites-context'
 import { useUserRecipes } from '../store/userRecipes-context'
 import { useShopping } from '../store/shopping-context'
+import RecipeCover from '../components/recipes/RecipeCover'
 
 export default function RecipeDetailPage() {
   const { id } = useParams()
@@ -45,12 +46,7 @@ export default function RecipeDetailPage() {
         Înapoi la rețete
       </Link>
 
-      <div
-        className="mt-4 flex h-40 items-center justify-center rounded-3xl bg-sunk text-7xl"
-        aria-hidden="true"
-      >
-        {MEAL_META[recipe.mealType].emoji}
-      </div>
+      <RecipeCover recipe={recipe} className="mt-4 h-40 rounded-3xl" emojiClass="text-7xl" />
 
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>

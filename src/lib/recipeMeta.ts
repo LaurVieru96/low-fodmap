@@ -1,11 +1,31 @@
 import type { Difficulty, MealType } from './types'
 
-export const MEAL_META: Record<MealType, { label: string; emoji: string }> = {
-  breakfast: { label: 'Mic dejun', emoji: '🍳' },
-  lunch: { label: 'Prânz', emoji: '🥗' },
-  dinner: { label: 'Cină', emoji: '🍽️' },
-  'snack-dessert': { label: 'Gustări & deserturi', emoji: '🍪' },
-  basic: { label: 'Baze & sosuri', emoji: '🫙' },
+export const MEAL_META: Record<MealType, { label: string; emoji: string; cover: string }> = {
+  breakfast: {
+    label: 'Mic dejun',
+    emoji: '🍳',
+    cover: 'linear-gradient(135deg, #fdf0d5, #f7e2c4)',
+  },
+  lunch: {
+    label: 'Prânz',
+    emoji: '🥗',
+    cover: 'linear-gradient(135deg, #e7f1e6, #d6e8d4)',
+  },
+  dinner: {
+    label: 'Cină',
+    emoji: '🍽️',
+    cover: 'linear-gradient(135deg, #fce7df, #f6d6ca)',
+  },
+  'snack-dessert': {
+    label: 'Gustări & deserturi',
+    emoji: '🍪',
+    cover: 'linear-gradient(135deg, #f7e4ee, #efd3e1)',
+  },
+  basic: {
+    label: 'Baze & sosuri',
+    emoji: '🫙',
+    cover: 'linear-gradient(135deg, #eee7dd, #e4d9c9)',
+  },
 }
 
 export const MEAL_ORDER: MealType[] = ['breakfast', 'lunch', 'dinner', 'snack-dessert', 'basic']
