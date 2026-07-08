@@ -10,10 +10,10 @@ import { normalize } from '../lib/fodmap'
 export const foods: Food[] = [
   // ── Fructe ──────────────────────────────────────────────
   { id: 'banana-ferma', nameRo: 'Banană fermă', nameEn: 'Banana, firm', category: 'fruits', emoji: '🍌', status: 'green', serving: '1 medie (100 g)', groups: [], note: 'Necoaptă — mai puțini fructani decât cea coaptă.', confidence: 'monash' },
-  { id: 'banana-coapta', nameRo: 'Banană coaptă', nameEn: 'Banana, ripe', category: 'fruits', emoji: '🍌', status: 'amber', serving: '1/3 (35 g)', groups: ['fructans'], note: 'Fructanii cresc pe măsură ce se coace.', confidence: 'monash', dial: [{ grams: '≤ 35 g', note: '1/3', status: 'green' }, { grams: 'mai mult', note: 'întreagă', status: 'red' }] },
+  { id: 'banana-coapta', nameRo: 'Banană coaptă', nameEn: 'Banana, ripe', category: 'fruits', emoji: '🍌', status: 'amber', serving: '1/3 (35 g)', groups: ['fructans'], note: 'Fructanii cresc pe măsură ce se coace.', confidence: 'monash', dial: [{ grams: '≤ 35 g', note: '1/3', status: 'green' }, { grams: '~1/2', note: '', status: 'amber' }, { grams: 'întreagă', note: '', status: 'red' }] },
   { id: 'afine', nameRo: 'Afine', nameEn: 'Blueberry', category: 'fruits', emoji: '🫐', status: 'green', serving: '1 cană (125 g)', groups: [], note: 'Retestat 2022 în sus (era 40 g).', confidence: 'monash', flag: 'retestat — porție mărită' },
   { id: 'capsuni', nameRo: 'Căpșuni', nameEn: 'Strawberry', category: 'fruits', emoji: '🍓', status: 'green', serving: '5 medii (65 g)', groups: [], note: 'Peste 6 bucăți → moderat.', confidence: 'monash' },
-  { id: 'zmeura', nameRo: 'Zmeură', nameEn: 'Raspberry', category: 'fruits', emoji: '🍓', status: 'green', serving: '30 buc (60 g)', groups: ['fructans'], confidence: 'monash' },
+  { id: 'zmeura', nameRo: 'Zmeură', nameEn: 'Raspberry', category: 'fruits', emoji: '🍓', status: 'green', serving: '60 g (1/3 cană)', groups: ['fructans'], confidence: 'monash' },
   { id: 'mure', nameRo: 'Mure', nameEn: 'Blackberry', category: 'fruits', emoji: '🫐', status: 'red', groups: ['sorbitol'], note: 'Bogate în sorbitol.', confidence: 'monash' },
   { id: 'portocala', nameRo: 'Portocală', nameEn: 'Orange', category: 'fruits', emoji: '🍊', status: 'green', serving: '1 medie (130 g)', groups: [], note: 'Swap clasic pentru măr.', confidence: 'monash' },
   { id: 'mandarine', nameRo: 'Mandarine', nameEn: 'Mandarin', category: 'fruits', emoji: '🍊', status: 'green', serving: '2 buc', groups: [], confidence: 'monash' },
@@ -114,6 +114,7 @@ export const foods: Food[] = [
   { id: 'peste', nameRo: 'Pește', nameEn: 'Fish', category: 'protein', emoji: '🐟', status: 'green', serving: 'liber', groups: [], confidence: 'monash' },
   { id: 'somon', nameRo: 'Somon', nameEn: 'Salmon', category: 'protein', emoji: '🐟', status: 'green', serving: 'liber', groups: [], confidence: 'monash' },
   { id: 'creveti', nameRo: 'Creveți', nameEn: 'Shrimp', category: 'protein', emoji: '🦐', status: 'green', serving: 'liber', groups: [], confidence: 'monash' },
+  { id: 'curcan', nameRo: 'Curcan', nameEn: 'Turkey', category: 'protein', emoji: '🦃', status: 'green', serving: 'liber', groups: [], confidence: 'monash' },
   { id: 'tofu-ferm', nameRo: 'Tofu ferm', nameEn: 'Firm tofu', category: 'protein', emoji: '🧊', status: 'green', serving: '170 g', groups: [], note: 'Presat — fără oligozaharide.', confidence: 'monash' },
   { id: 'tofu-moale', nameRo: 'Tofu moale (silken)', nameEn: 'Silken tofu', category: 'protein', emoji: '🧊', status: 'red', groups: ['gos'], confidence: 'monash' },
   { id: 'tempeh', nameRo: 'Tempeh', nameEn: 'Tempeh', category: 'protein', emoji: '🧊', status: 'green', serving: '100 g', groups: [], note: 'Fermentat.', confidence: 'monash' },
@@ -139,6 +140,8 @@ export const foods: Food[] = [
   { id: 'seminte-dovleac', nameRo: 'Semințe de dovleac', nameEn: 'Pumpkin seeds', category: 'nuts-seeds', emoji: '🌰', status: 'green', serving: '2 lg (23 g)', groups: [], confidence: 'monash' },
   { id: 'chia', nameRo: 'Semințe de chia', nameEn: 'Chia seeds', category: 'nuts-seeds', emoji: '🌰', status: 'green', serving: '2 lg (24 g)', groups: [], confidence: 'monash' },
   { id: 'in', nameRo: 'Semințe de in', nameEn: 'Flaxseed', category: 'nuts-seeds', emoji: '🌰', status: 'green', serving: '1 lg', groups: [], confidence: 'monash' },
+  { id: 'pecan', nameRo: 'Pecan', nameEn: 'Pecans', category: 'nuts-seeds', emoji: '🥜', status: 'green', serving: '15 jumătăți (40 g)', groups: [], confidence: 'monash' },
+  { id: 'susan', nameRo: 'Susan / tahini', nameEn: 'Sesame / tahini', category: 'nuts-seeds', emoji: '🌰', status: 'green', serving: '1 lg', groups: [], confidence: 'monash' },
 
   // ── Îndulcitori ─────────────────────────────────────────
   { id: 'zahar', nameRo: 'Zahăr', nameEn: 'Sugar', category: 'sweeteners', emoji: '🍬', status: 'green', serving: 'moderat', groups: [], confidence: 'monash' },

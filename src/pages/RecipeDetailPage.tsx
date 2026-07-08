@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Clock, Heart, Users } from 'lucide-react'
 import { getRecipeById } from '../data/recipes'
 import { DIFFICULTY_META, MEAL_META, tagLabel } from '../lib/recipeMeta'
+import { STATUS_META } from '../lib/status'
 import { useFavorites } from '../store/favorites-context'
 import { useUserRecipes } from '../store/userRecipes-context'
 
@@ -94,10 +95,13 @@ export default function RecipeDetailPage() {
           {recipe.ingredients.map((ing, i) => (
             <li key={i} className="flex gap-3 text-ink-soft">
               <span
-                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green"
+                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                style={{
+                  background: ing.status ? STATUS_META[ing.status].color : 'var(--color-line)',
+                }}
                 aria-hidden="true"
               />
-              {ing}
+              {ing.name}
             </li>
           ))}
         </ul>

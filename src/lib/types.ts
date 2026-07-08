@@ -53,6 +53,17 @@ export interface Food {
 export type Difficulty = 'easy' | 'medium' | 'advanced'
 export type MealType = 'breakfast' | 'lunch' | 'dinner' | 'snack-dessert' | 'basic'
 
+export interface Ingredient {
+  /** Display text, e.g. "200 g mix de făină fără gluten". */
+  name: string
+  /** Optional link to the food database (used by the recipe builder). */
+  foodId?: string
+  /** Optional numeric amount for the builder's per-serving validation. */
+  grams?: number
+  /** Precomputed status for this ingredient at its amount (builder recipes). */
+  status?: FodmapStatus
+}
+
 export interface Recipe {
   id: string
   title: string
@@ -62,7 +73,7 @@ export interface Recipe {
   activeTimeMin?: number
   difficulty: Difficulty
   servings: number
-  ingredients: string[]
+  ingredients: Ingredient[]
   steps: string[]
   tags: string[]
   /** English stock-photo search term for later image sourcing. */

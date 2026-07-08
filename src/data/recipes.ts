@@ -1,12 +1,15 @@
 import type { Recipe } from '../lib/types'
 import { normalize } from '../lib/fodmap'
 
+/** Seed rows keep ingredients as plain strings; mapped to `Ingredient[]` below. */
+type RawRecipe = Omit<Recipe, 'ingredients'> & { ingredients: string[] }
+
 /**
  * Low-FODMAP seed recipes (source: plan Anexa A, rewritten in Romanian).
  * Every ingredient is low-FODMAP at the stated per-serving amount; portion
  * limits are called out inline. `photoKeyword` seeds later image sourcing.
  */
-export const recipes: Recipe[] = [
+const rawRecipes: RawRecipe[] = [
   // ── Mic dejun ───────────────────────────────────────────
   {
     id: 'ovaz-ciocolata-capsuni',
@@ -506,6 +509,12 @@ export const recipes: Recipe[] = [
   },
 ]
 
+/** Seed recipes with ingredients normalized to `Ingredient[]` (name only). */
+export const recipes: Recipe[] = rawRecipes.map((r) => ({
+  ...r,
+  ingredients: r.ingredients.map((name) => ({ name })),
+}))
+
 const byId = new Map(recipes.map((r) => [r.id, r]))
 
 export function getRecipeById(id: string): Recipe | undefined {
@@ -517,6 +526,6 @@ export function recipeMatchesQuery(recipe: Recipe, query: string): boolean {
   const q = normalize(query)
   return (
     normalize(recipe.title).includes(q) ||
-    recipe.ingredients.some((i) => normalize(i).includes(q))
+    recipe.ingredients.some((i) => normalize(i.name).includes(q))
   )
 }
