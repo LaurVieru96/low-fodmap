@@ -188,6 +188,17 @@ export const foods: Food[] = [
   { id: 'baton-granola', nameRo: 'Batoane granola', nameEn: 'Granola bars', category: 'snacks', emoji: '🍫', status: 'red', groups: ['fructans', 'fructose'], note: 'Inulină, miere, fructe uscate.', confidence: 'monash' },
   { id: 'varza-murata', nameRo: 'Varză murată', nameEn: 'Sauerkraut', category: 'snacks', emoji: '🥬', status: 'red', serving: '1 lg (20 g)', groups: ['mannitol'], note: 'Fermentarea creează manitol — mai rea decât crudă.', confidence: 'monash' },
   { id: 'castraveti-murati', nameRo: 'Castraveți murați (oțet)', nameEn: 'Pickled cucumbers', category: 'snacks', emoji: '🥒', status: 'green', serving: '75 g (~3 buc)', groups: [], note: 'Atenție la usturoiul din borcan.', confidence: 'monash' },
+
+  // ── Completări (pește gras, ulei de măsline, fermentate, prebiotice) ──
+  { id: 'sardine', nameRo: 'Sardine', nameEn: 'Sardines', category: 'protein', emoji: '🐟', status: 'green', serving: 'liber', groups: [], note: 'Pește gras mic — bogat în omega-3.', confidence: 'monash' },
+  { id: 'macrou', nameRo: 'Macrou', nameEn: 'Mackerel', category: 'protein', emoji: '🐟', status: 'green', serving: 'liber', groups: [], note: 'Pește gras — omega-3.', confidence: 'monash' },
+  { id: 'hering', nameRo: 'Hering', nameEn: 'Herring', category: 'protein', emoji: '🐟', status: 'green', serving: 'liber', groups: [], note: 'Pește gras — omega-3.', confidence: 'monash' },
+  { id: 'orez-negru', nameRo: 'Orez negru', nameEn: 'Black rice', category: 'grains', emoji: '🍚', status: 'green', serving: '1 cană fiert', groups: [], note: 'Fără gluten, bogat în antociani.', confidence: 'monash' },
+  { id: 'iaurt-cocos', nameRo: 'Iaurt de cocos', nameEn: 'Coconut yogurt', category: 'dairy', emoji: '🥥', status: 'green', serving: 'liber', groups: [], note: 'Fără lactoză.', confidence: 'monash' },
+  { id: 'ulei-masline', nameRo: 'Ulei de măsline extravirgin', nameEn: 'Extra virgin olive oil', category: 'condiments', emoji: '🫒', status: 'green', serving: 'liber', groups: [], note: 'Grăsime — fără FODMAP.', confidence: 'monash' },
+  { id: 'turmeric', nameRo: 'Turmeric', nameEn: 'Turmeric', category: 'condiments', emoji: '🧂', status: 'green', serving: 'liber', groups: [], note: 'Condiment antiinflamator; cu piper negru.', confidence: 'monash' },
+  { id: 'anghinare', nameRo: 'Anghinare', nameEn: 'Artichoke', category: 'vegetables', emoji: '🌿', status: 'red', groups: ['fructans'], note: 'Foarte bogată în inulină (fructani).', confidence: 'monash' },
+  { id: 'kimchi', nameRo: 'Kimchi', nameEn: 'Kimchi', category: 'snacks', emoji: '🥬', status: 'red', groups: ['fructans'], note: 'Fermentat, dar cu varză chinezească + usturoi/ceapă.', confidence: 'inferred', flag: 'estimat' },
 ]
 
 const byId = new Map(foods.map((f) => [f.id, f]))

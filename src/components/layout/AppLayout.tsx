@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { PlusCircle } from 'lucide-react'
+import { PlusCircle, Sparkles } from 'lucide-react'
 import { navItems } from '../../lib/nav'
+import { patientProfile } from '../../data/patient'
 import { APP_NAME, APP_TAGLINE } from '../../lib/constants'
 import ProfileButton from '../profile/ProfileButton'
 import ProfileSheet from '../profile/ProfileSheet'
@@ -26,6 +27,10 @@ function Wordmark() {
 }
 
 export default function AppLayout() {
+  // The patient page only appears when a profile is loaded (see src/data/patient).
+  const items = patientProfile
+    ? [...navItems, { to: '/recomandari', label: 'Recomandări', short: 'Sfaturi', icon: Sparkles }]
+    : navItems
   return (
     <div className="mx-auto flex min-h-svh w-full max-w-6xl">
       {/* Sidebar — desktop */}
@@ -34,7 +39,7 @@ export default function AppLayout() {
           <Wordmark />
         </div>
         <nav className="mt-8 flex flex-col gap-1">
-          {navItems.map((item) => {
+          {items.map((item) => {
             const Icon = item.icon
             return (
               <NavLink
@@ -89,7 +94,7 @@ export default function AppLayout() {
         className="fixed inset-x-0 bottom-0 z-20 flex border-t border-line bg-surface/95 backdrop-blur lg:hidden"
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
-        {navItems.map((item) => {
+        {items.map((item) => {
           const Icon = item.icon
           return (
             <NavLink

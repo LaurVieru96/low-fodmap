@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Patient health data — never commit (loaded at build if present)
+*.local.ts
+# Raw lab reports / source documents (sensitive) placed at the repo root
+/data/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

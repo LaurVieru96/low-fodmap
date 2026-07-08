@@ -13,6 +13,7 @@ import RecipeDetailPage from './pages/RecipeDetailPage'
 import MyRecipePage from './pages/MyRecipePage'
 import FavoritesPage from './pages/FavoritesPage'
 import ShoppingPage from './pages/ShoppingPage'
+import RecomandariPage from './pages/RecomandariPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 const PAGE_TITLES: Record<string, string> = {
@@ -22,6 +23,7 @@ const PAGE_TITLES: Record<string, string> = {
   '/reteta-mea': `Rețeta mea · ${APP_NAME}`,
   '/favorite': `Favorite · ${APP_NAME}`,
   '/cumparaturi': `Cumpărături · ${APP_NAME}`,
+  '/recomandari': `Recomandări · ${APP_NAME}`,
 }
 
 /** Resets scroll and sets the document title on every route change. */
@@ -52,6 +54,7 @@ function App() {
                 <Route path="/reteta-mea" element={<MyRecipePage />} />
                 <Route path="/favorite" element={<FavoritesPage />} />
                 <Route path="/cumparaturi" element={<ShoppingPage />} />
+                <Route path="/recomandari" element={<RecomandariPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Route>
             </Routes>

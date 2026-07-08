@@ -2,7 +2,10 @@ import type { Food } from '../../lib/types'
 import { GROUP_META } from '../../lib/fodmap'
 import { useProfile } from '../../store/profile-context'
 import { personalStatus } from '../../lib/personalStatus'
+import { patientView } from '../../lib/patient'
+import { getPatientRec } from '../../data/patient'
 import StatusBadge from '../StatusBadge'
+import PatientBadge from '../patient/PatientBadge'
 
 interface FoodRowProps {
   food: Food
@@ -17,6 +20,9 @@ export default function FoodRow({ food, onSelect }: FoodRowProps) {
   const personal = profile.personalized ? personalStatus(food, profile.tolerances) : null
   const shownStatus = personal ? personal.status : food.status
   const unlocked = personal?.unlocked ?? false
+
+  const rec = getPatientRec(food.id)
+  const pView = rec ? patientView(food.status, rec.stance) : null
 
   return (
     <li>
@@ -35,6 +41,11 @@ export default function FoodRow({ food, onSelect }: FoodRowProps) {
         {unlocked && (
           <span className="shrink-0 rounded-full bg-accent-soft px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent">
             pentru tine
+          </span>
+        )}
+        {pView && (
+          <span className="shrink-0">
+            <PatientBadge view={pView} compact />
           </span>
         )}
         <StatusBadge status={shownStatus} />

@@ -7,8 +7,11 @@ import { useFavorites } from '../../store/favorites-context'
 import { useShopping } from '../../store/shopping-context'
 import { useProfile } from '../../store/profile-context'
 import { personalStatus } from '../../lib/personalStatus'
+import { patientView } from '../../lib/patient'
+import { getPatientRec } from '../../data/patient'
 import Sheet from '../Sheet'
 import StatusBadge from '../StatusBadge'
+import PatientBadge from '../patient/PatientBadge'
 import ServingDial from '../ServingDial'
 
 interface FoodDetailSheetProps {
@@ -26,6 +29,9 @@ export default function FoodDetailSheet({ food, onClose }: FoodDetailSheetProps)
   const personal = food && profile.personalized ? personalStatus(food, profile.tolerances) : null
   const shownStatus = personal ? personal.status : (food?.status ?? 'green')
   const unlocked = personal?.unlocked ?? false
+
+  const patientRec = food ? getPatientRec(food.id) : undefined
+  const pView = food && patientRec ? patientView(food.status, patientRec.stance) : null
 
   return (
     <Sheet open={food !== null} onClose={onClose} title={food?.nameRo}>
@@ -85,6 +91,40 @@ export default function FoodDetailSheet({ food, onClose }: FoodDetailSheetProps)
                   </span>
                 ))}
               </div>
+            </div>
+          )}
+
+          {pView && patientRec && (
+            <div
+              className={`mt-5 rounded-xl border px-4 py-3 ${
+                pView === 'conflict'
+                  ? 'border-berry/30 bg-berry-soft/40'
+                  : 'border-accent/20 bg-accent-soft/40'
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                <PatientBadge view={pView} />
+                <span className="text-xs font-semibold uppercase tracking-wide text-muted">
+                  pentru tine
+                </span>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{patientRec.reason}</p>
+              {pView === 'conflict' && (
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
+                  {patientRec.stance === 'recommended'
+                    ? 'Raportul îl recomandă, dar dieta low-FODMAP îl evită.'
+                    : 'Dieta low-FODMAP îl permite, dar raportul îl evită.'}
+                  {patientRec.fodmapNote ? ` ${patientRec.fodmapNote}` : ''}
+                </p>
+              )}
+              {pView !== 'conflict' && patientRec.fodmapNote && (
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
+                  {patientRec.fodmapNote}
+                </p>
+              )}
+              <p className="mt-2 text-xs leading-relaxed text-muted">
+                Sursă: raport derivat din analize, nu din laborator. Nu e sfat medical.
+              </p>
             </div>
           )}
 
