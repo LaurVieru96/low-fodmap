@@ -13,6 +13,7 @@ const rawRecipes: RawRecipe[] = [
   // ── Mic dejun ───────────────────────────────────────────
   {
     id: 'ovaz-ciocolata-capsuni',
+    image: '/images/recipes/ovaz-ciocolata-capsuni.jpg',
     title: 'Ovăz peste noapte cu ciocolată și căpșuni',
     mealType: 'breakfast',
     totalTimeMin: 5,
@@ -26,6 +27,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'clatite-afine',
+    image: '/images/recipes/clatite-afine.jpg',
     title: 'Clătite americane cu afine',
     mealType: 'breakfast',
     totalTimeMin: 20,
@@ -39,6 +41,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'omleta-somon-spanac',
+    image: '/images/recipes/omleta-somon-spanac.jpg',
     title: 'Omletă cu somon și spanac',
     mealType: 'breakfast',
     totalTimeMin: 20,
@@ -52,6 +55,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'smoothie-capsuni',
+    image: '/images/recipes/smoothie-capsuni.jpg',
     title: 'Smoothie de căpșuni',
     mealType: 'breakfast',
     totalTimeMin: 5,
@@ -65,6 +69,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'budinca-chia-zmeura',
+    image: '/images/recipes/budinca-chia-zmeura.jpg',
     title: 'Budincă de chia cu zmeură și vanilie',
     mealType: 'breakfast',
     totalTimeMin: 10,
@@ -79,6 +84,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'briose-ou-spanac-bacon',
+    image: '/images/recipes/briose-ou-spanac-bacon.jpg',
     title: 'Brioșe de ou cu spanac, ardei și bacon',
     mealType: 'breakfast',
     totalTimeMin: 35,
@@ -92,6 +98,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'granola-artar-nuci',
+    image: '/images/recipes/granola-artar-nuci.jpg',
     title: 'Granola cu arțar și nuci',
     mealType: 'breakfast',
     totalTimeMin: 35,
@@ -107,6 +114,7 @@ const rawRecipes: RawRecipe[] = [
   // ── Prânz ───────────────────────────────────────────────
   {
     id: 'salata-kale-quinoa',
+    image: '/images/recipes/salata-kale-quinoa.jpg',
     title: 'Salată kale-quinoa cu afine și feta',
     mealType: 'lunch',
     totalTimeMin: 20,
@@ -120,6 +128,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'supa-crema-dovleac',
+    image: '/images/recipes/supa-crema-dovleac.jpg',
     title: 'Supă cremă de dovleac',
     mealType: 'lunch',
     totalTimeMin: 65,
@@ -134,6 +143,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'supa-pui-taitei',
+    image: '/images/recipes/supa-pui-taitei.jpg',
     title: 'Supă de pui cu tăiței',
     mealType: 'lunch',
     totalTimeMin: 30,
@@ -147,6 +157,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'supa-morcovi-ghimbir',
+    image: '/images/recipes/supa-morcovi-ghimbir.jpg',
     title: 'Supă de morcovi cu ghimbir',
     mealType: 'lunch',
     totalTimeMin: 40,
@@ -160,6 +171,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'wrap-pui-buffalo',
+    image: '/images/recipes/wrap-pui-buffalo.jpg',
     title: 'Wrap cu pui Buffalo',
     mealType: 'lunch',
     totalTimeMin: 15,
@@ -173,6 +185,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'bol-fajita-pui',
+    image: '/images/recipes/bol-fajita-pui.jpg',
     title: 'Bol fajita cu pui la tavă',
     mealType: 'lunch',
     totalTimeMin: 30,
@@ -186,6 +199,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'salata-paste-mediteraneana',
+    image: '/images/recipes/salata-paste-mediteraneana.jpg',
     title: 'Salată mediteraneană de paste',
     mealType: 'lunch',
     totalTimeMin: 25,
@@ -199,6 +213,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'salata-vita-mustar',
+    image: '/images/recipes/salata-vita-mustar.jpg',
     title: 'Salată de vită cu vinegretă de muștar',
     mealType: 'lunch',
     totalTimeMin: 30,
@@ -214,6 +229,7 @@ const rawRecipes: RawRecipe[] = [
   // ── Cină ────────────────────────────────────────────────
   {
     id: 'pui-grecesc-cartofi',
+    image: '/images/recipes/pui-grecesc-cartofi.jpg',
     title: 'Pui grecesc cu lămâie și cartofi la tavă',
     mealType: 'dinner',
     totalTimeMin: 70,
@@ -227,6 +243,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'stir-fry-vita-lime',
+    image: '/images/recipes/stir-fry-vita-lime.jpg',
     title: 'Stir-fry de vită cu lime și susan',
     mealType: 'dinner',
     totalTimeMin: 30,
@@ -240,6 +257,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'paste-ragu',
+    image: '/images/recipes/paste-ragu.jpg',
     title: 'Paste al ragù (gătit lent)',
     mealType: 'dinner',
     totalTimeMin: 210,
@@ -254,6 +272,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'somon-lamaie-marar',
+    image: '/images/recipes/somon-lamaie-marar.jpg',
     title: 'Somon la cuptor cu lămâie și mărar',
     mealType: 'dinner',
     totalTimeMin: 35,
@@ -267,6 +286,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'curry-pui-slow-cooker',
+    image: '/images/recipes/curry-pui-slow-cooker.jpg',
     title: 'Curry de pui la slow cooker',
     mealType: 'dinner',
     totalTimeMin: 375,
@@ -281,6 +301,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'paste-lamaie-creveti',
+    image: '/images/recipes/paste-lamaie-creveti.jpg',
     title: 'Paste picante cu lămâie și creveți',
     mealType: 'dinner',
     totalTimeMin: 30,
@@ -294,6 +315,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'burger-curcan',
+    image: '/images/recipes/burger-curcan.jpg',
     title: 'Burger de curcan',
     mealType: 'dinner',
     totalTimeMin: 20,
@@ -307,6 +329,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'tacos-vita',
+    image: '/images/recipes/tacos-vita.jpg',
     title: 'Tacos rapid cu vită',
     mealType: 'dinner',
     totalTimeMin: 20,
@@ -320,6 +343,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'pui-orez-lamaie',
+    image: '/images/recipes/pui-orez-lamaie.jpg',
     title: 'Pui cu orez și lămâie (o tigaie)',
     mealType: 'dinner',
     totalTimeMin: 35,
@@ -333,6 +357,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'vita-cartofi-chimichurri',
+    image: '/images/recipes/vita-cartofi-chimichurri.jpg',
     title: 'Vită cu cartofi la tavă și chimichurri',
     mealType: 'dinner',
     totalTimeMin: 40,
@@ -346,6 +371,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'paste-rosii-busuioc-pui',
+    image: '/images/recipes/paste-rosii-busuioc-pui.jpg',
     title: 'Paste roșii-busuioc cu pui (Instant Pot)',
     mealType: 'dinner',
     totalTimeMin: 60,
@@ -361,6 +387,7 @@ const rawRecipes: RawRecipe[] = [
   // ── Gustări & deserturi ─────────────────────────────────
   {
     id: 'bilute-brownie-arahide',
+    image: '/images/recipes/bilute-brownie-arahide.jpg',
     title: 'Biluțe brownie cu unt de arahide',
     mealType: 'snack-dessert',
     totalTimeMin: 10,
@@ -375,6 +402,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'chec-banane',
+    image: '/images/recipes/chec-banane.jpg',
     title: 'Chec de banane',
     mealType: 'snack-dessert',
     totalTimeMin: 70,
@@ -388,6 +416,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'brownies-un-bol',
+    image: '/images/recipes/brownies-un-bol.jpg',
     title: 'Brownies dintr-un singur bol',
     mealType: 'snack-dessert',
     totalTimeMin: 30,
@@ -401,6 +430,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'briose-afine',
+    image: '/images/recipes/briose-afine.jpg',
     title: 'Brioșe cu afine',
     mealType: 'snack-dessert',
     totalTimeMin: 45,
@@ -414,6 +444,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'fursecuri-arahide',
+    image: '/images/recipes/fursecuri-arahide.jpg',
     title: 'Fursecuri cu unt de arahide (3 ingrediente)',
     mealType: 'snack-dessert',
     totalTimeMin: 50,
@@ -427,6 +458,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'biluti-carrot-cake',
+    image: '/images/recipes/biluti-carrot-cake.jpg',
     title: 'Biluțe energizante „carrot cake"',
     mealType: 'snack-dessert',
     totalTimeMin: 30,
@@ -441,6 +473,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'salata-fructe-menta',
+    image: '/images/recipes/salata-fructe-menta.jpg',
     title: 'Salată de fructe cu mentă',
     mealType: 'snack-dessert',
     totalTimeMin: 10,
@@ -456,6 +489,7 @@ const rawRecipes: RawRecipe[] = [
   // ── Baze & sosuri ───────────────────────────────────────
   {
     id: 'ulei-infuzat-usturoi',
+    image: '/images/recipes/ulei-infuzat-usturoi.jpg',
     title: 'Ulei infuzat cu usturoi',
     mealType: 'basic',
     totalTimeMin: 135,
@@ -470,6 +504,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'concentrat-supa-legume',
+    image: '/images/recipes/concentrat-supa-legume.jpg',
     title: 'Concentrat de supă de legume',
     mealType: 'basic',
     totalTimeMin: 15,
@@ -483,6 +518,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'sos-rosii-simplu',
+    image: '/images/recipes/sos-rosii-simplu.jpg',
     title: 'Sos de roșii din 5 ingrediente',
     mealType: 'basic',
     totalTimeMin: 20,
@@ -496,6 +532,7 @@ const rawRecipes: RawRecipe[] = [
   },
   {
     id: 'vinegreta-lamaie',
+    image: '/images/recipes/vinegreta-lamaie.jpg',
     title: 'Vinegretă cu lămâie',
     mealType: 'basic',
     totalTimeMin: 5,

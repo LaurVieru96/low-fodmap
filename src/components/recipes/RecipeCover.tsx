@@ -22,7 +22,7 @@ export default function RecipeCover({
       {recipe.image ? (
         <img
           src={recipe.image}
-          alt=""
+          alt={recipe.title}
           loading="lazy"
           className="h-full w-full object-cover"
         />
