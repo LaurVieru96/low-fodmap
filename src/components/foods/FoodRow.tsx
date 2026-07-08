@@ -1,5 +1,7 @@
 import type { Food } from '../../lib/types'
 import { GROUP_META } from '../../lib/fodmap'
+import { useProfile } from '../../store/profile-context'
+import { personalStatus } from '../../lib/personalStatus'
 import StatusBadge from '../StatusBadge'
 
 interface FoodRowProps {
@@ -8,8 +10,13 @@ interface FoodRowProps {
 }
 
 export default function FoodRow({ food, onSelect }: FoodRowProps) {
+  const { profile } = useProfile()
   const groups = food.groups.map((g) => GROUP_META[g].short).join(', ')
   const sub = [food.serving, groups].filter(Boolean).join(' · ')
+
+  const personal = profile.personalized ? personalStatus(food, profile.tolerances) : null
+  const shownStatus = personal ? personal.status : food.status
+  const unlocked = personal?.unlocked ?? false
 
   return (
     <li>
@@ -25,7 +32,12 @@ export default function FoodRow({ food, onSelect }: FoodRowProps) {
           <span className="block font-medium text-ink">{food.nameRo}</span>
           {sub && <span className="block truncate text-xs text-muted">{sub}</span>}
         </span>
-        <StatusBadge status={food.status} />
+        {unlocked && (
+          <span className="shrink-0 rounded-full bg-accent-soft px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent">
+            pentru tine
+          </span>
+        )}
+        <StatusBadge status={shownStatus} />
       </button>
     </li>
   )

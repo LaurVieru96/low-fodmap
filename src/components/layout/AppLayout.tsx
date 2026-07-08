@@ -2,6 +2,8 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { PlusCircle } from 'lucide-react'
 import { navItems } from '../../lib/nav'
 import { APP_NAME, APP_TAGLINE } from '../../lib/constants'
+import ProfileButton from '../profile/ProfileButton'
+import ProfileSheet from '../profile/ProfileSheet'
 
 function Wordmark() {
   return (
@@ -53,25 +55,29 @@ export default function AppLayout() {
             )
           })}
         </nav>
-        <NavLink
-          to="/reteta-mea"
-          className={({ isActive }) =>
-            `mt-auto flex items-center gap-2.5 rounded-xl border border-dashed px-3 py-2.5 text-sm font-semibold transition-colors ${
-              isActive
-                ? 'border-accent bg-accent-soft text-accent'
-                : 'border-line text-ink hover:bg-sunk'
-            }`
-          }
-        >
-          <PlusCircle size={19} strokeWidth={2} aria-hidden="true" />
-          Rețeta mea
-        </NavLink>
+        <div className="mt-auto flex flex-col gap-2">
+          <ProfileButton variant="sidebar" />
+          <NavLink
+            to="/reteta-mea"
+            className={({ isActive }) =>
+              `flex items-center gap-2.5 rounded-xl border border-dashed px-3 py-2.5 text-sm font-semibold transition-colors ${
+                isActive
+                  ? 'border-accent bg-accent-soft text-accent'
+                  : 'border-line text-ink hover:bg-sunk'
+              }`
+            }
+          >
+            <PlusCircle size={19} strokeWidth={2} aria-hidden="true" />
+            Rețeta mea
+          </NavLink>
+        </div>
       </aside>
 
       {/* Main column */}
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-paper/90 px-4 py-3 backdrop-blur lg:hidden">
           <Wordmark />
+          <ProfileButton variant="header" />
         </header>
         <main className="flex-1 px-4 py-6 pb-28 sm:px-6 lg:px-10 lg:py-10 lg:pb-10">
           <Outlet />
@@ -102,6 +108,8 @@ export default function AppLayout() {
           )
         })}
       </nav>
+
+      <ProfileSheet />
     </div>
   )
 }

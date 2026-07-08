@@ -8,6 +8,12 @@ export type FodmapGroup =
   | 'sorbitol'
   | 'mannitol'
 
+/** Where the user is in the low-FODMAP journey (drives the personal profile). */
+export type DietPhase = 'elimination' | 'reintroduction' | 'personalization'
+
+/** Per-subgroup tolerance the user learns during reintroduction. */
+export type Tolerance = 'tolerated' | 'untested' | 'not-tolerated'
+
 export type FoodCategory =
   | 'fruits'
   | 'vegetables'

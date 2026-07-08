@@ -2,8 +2,10 @@ import { useMemo, useState } from 'react'
 import { Search } from 'lucide-react'
 import { foods, foodMatchesQuery } from '../data/foods'
 import { CATEGORY_META, CATEGORY_ORDER, GROUP_META } from '../lib/fodmap'
+import { personalStatus, countUnlocked } from '../lib/personalStatus'
 import type { Food, FodmapGroup, FoodCategory } from '../lib/types'
 import type { FodmapStatus } from '../lib/status'
+import { useProfile } from '../store/profile-context'
 import PageHeader from '../components/PageHeader'
 import FoodRow from '../components/foods/FoodRow'
 import FoodDetailSheet from '../components/foods/FoodDetailSheet'
@@ -18,6 +20,7 @@ const STATUS_FILTERS: { value: 'all' | FodmapStatus; label: string }[] = [
 const GROUP_KEYS = Object.keys(GROUP_META) as FodmapGroup[]
 
 export default function FoodsPage() {
+  const { profile, togglePersonalized, openSheet } = useProfile()
   const [query, setQuery] = useState('')
   const [status, setStatus] = useState<'all' | FodmapStatus>('all')
   const [category, setCategory] = useState<'all' | FoodCategory>('all')
@@ -26,14 +29,21 @@ export default function FoodsPage() {
 
   const filtered = useMemo(
     () =>
-      foods.filter(
-        (f) =>
+      foods.filter((f) => {
+        const st = profile.personalized ? personalStatus(f, profile.tolerances).status : f.status
+        return (
           foodMatchesQuery(f, query) &&
-          (status === 'all' || f.status === status) &&
+          (status === 'all' || st === status) &&
           (category === 'all' || f.category === category) &&
-          (group === 'all' || f.groups.includes(group)),
-      ),
-    [query, status, category, group],
+          (group === 'all' || f.groups.includes(group))
+        )
+      }),
+    [query, status, category, group, profile.personalized, profile.tolerances],
+  )
+
+  const unlockedCount = useMemo(
+    () => (profile.personalized ? countUnlocked(foods, profile.tolerances) : 0),
+    [profile.personalized, profile.tolerances],
   )
 
   const grouped = useMemo(() => {
@@ -70,6 +80,32 @@ export default function FoodsPage() {
           aria-label="Caută un aliment"
           className="w-full rounded-xl border border-line bg-surface py-2.5 pl-10 pr-3 text-ink placeholder:text-muted focus:border-accent focus:outline-none"
         />
+      </div>
+
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <span className="text-xs font-semibold uppercase tracking-wide text-muted">Semafor</span>
+        <div className="inline-flex rounded-full border border-line bg-surface p-0.5">
+          <button
+            type="button"
+            onClick={() => togglePersonalized(false)}
+            aria-pressed={!profile.personalized}
+            className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
+              !profile.personalized ? 'bg-ink text-white' : 'text-ink-soft hover:bg-sunk'
+            }`}
+          >
+            Monash
+          </button>
+          <button
+            type="button"
+            onClick={() => togglePersonalized(true)}
+            aria-pressed={profile.personalized}
+            className={`rounded-full px-3 py-1 text-sm font-medium transition-colors ${
+              profile.personalized ? 'bg-accent text-white' : 'text-ink-soft hover:bg-sunk'
+            }`}
+          >
+            Pentru mine
+          </button>
+        </div>
       </div>
 
       <div className="mb-5 flex flex-wrap items-center gap-2">
@@ -124,6 +160,30 @@ export default function FoodsPage() {
             {' — '}
             {GROUP_META[group].desc}
           </p>
+        </div>
+      )}
+
+      {profile.personalized && (
+        <div className="mb-4 rounded-xl border border-accent/20 bg-accent-soft/40 px-4 py-3 text-sm text-ink-soft">
+          {unlockedCount > 0 ? (
+            <>
+              <span className="font-semibold text-ink">{unlockedCount}</span>{' '}
+              {unlockedCount === 1 ? 'aliment deblocat' : 'alimente deblocate'} pentru tine, pe baza
+              subgrupelor pe care le toleri.
+            </>
+          ) : (
+            <>
+              Niciun aliment deblocat încă.{' '}
+              <button
+                type="button"
+                onClick={openSheet}
+                className="font-semibold text-accent underline underline-offset-2 hover:text-ink"
+              >
+                Setează-ți toleranțele
+              </button>{' '}
+              în Profilul meu.
+            </>
+          )}
         </div>
       )}
 

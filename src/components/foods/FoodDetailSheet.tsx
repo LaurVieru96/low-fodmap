@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { Heart, ShoppingBasket } from 'lucide-react'
 import type { Food } from '../../lib/types'
 import { CONFIDENCE_LABEL, GROUP_META } from '../../lib/fodmap'
+import { STATUS_META } from '../../lib/status'
 import { useFavorites } from '../../store/favorites-context'
 import { useShopping } from '../../store/shopping-context'
+import { useProfile } from '../../store/profile-context'
+import { personalStatus } from '../../lib/personalStatus'
 import Sheet from '../Sheet'
 import StatusBadge from '../StatusBadge'
 import ServingDial from '../ServingDial'
@@ -16,8 +19,13 @@ interface FoodDetailSheetProps {
 export default function FoodDetailSheet({ food, onClose }: FoodDetailSheetProps) {
   const { isFavorite, toggleFavorite } = useFavorites()
   const { addItem } = useShopping()
+  const { profile } = useProfile()
   const [addedId, setAddedId] = useState<string | null>(null)
   const fav = food ? isFavorite('food', food.id) : false
+
+  const personal = food && profile.personalized ? personalStatus(food, profile.tolerances) : null
+  const shownStatus = personal ? personal.status : (food?.status ?? 'green')
+  const unlocked = personal?.unlocked ?? false
 
   return (
     <Sheet open={food !== null} onClose={onClose} title={food?.nameRo}>
@@ -31,7 +39,14 @@ export default function FoodDetailSheet({ food, onClose }: FoodDetailSheetProps)
               <h2 className="font-display text-xl font-semibold text-ink">{food.nameRo}</h2>
               {food.nameEn && <p className="text-sm text-muted">{food.nameEn}</p>}
             </div>
-            <StatusBadge status={food.status} />
+            <div className="flex flex-col items-end gap-1">
+              <StatusBadge status={shownStatus} />
+              {unlocked && (
+                <span className="rounded-full bg-accent-soft px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent">
+                  pentru tine
+                </span>
+              )}
+            </div>
           </div>
 
           <div className="mt-6">
@@ -70,6 +85,22 @@ export default function FoodDetailSheet({ food, onClose }: FoodDetailSheetProps)
                   </span>
                 ))}
               </div>
+            </div>
+          )}
+
+          {unlocked && (
+            <div className="mt-5 rounded-xl border border-accent/20 bg-accent-soft/40 px-4 py-3">
+              <p className="text-sm leading-relaxed text-ink-soft">
+                <span className="font-semibold text-ink">
+                  {STATUS_META[food.status].label} la Monash
+                </span>
+                {' din cauza: '}
+                {food.groups.map((g) => GROUP_META[g].short).join(', ')}. Tu{' '}
+                {food.groups.length > 1 ? 'le tolerezi' : 'o tolerezi'} → verde pentru tine.
+              </p>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted">
+                Presupune porții normale; stacking-ul și porțiile mari tot contează.
+              </p>
             </div>
           )}
 
